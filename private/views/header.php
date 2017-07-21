@@ -18,14 +18,17 @@
         <h3 class="text-muted">Les Foodtrucks du coin !</h3>
 
         <nav>
-          <ul class="nav navbar-right">
 
-            <li><a href="index.php?page=register">Inscription</a></li>
-            <li><a href="index.php?page=login">Connexion</a></li>
-            <li><a href="index.php?page=profile">UserName</a></li>
+            <?php if (!(isset($_SESSION['user']['id']) && !empty($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id']))) : ?>
+            <a href="index.php?page=register">Inscription</a>
+            <a href="index.php?page=login">Connexion</a>
+            <?php else: ?>
+            <a href="index.php?page=profile">UserName</a>
+            <?php endif; ?>
 
-          </ul>
         </nav>
+
+        <hr>
 
         <nav>
           <ul class="nav nav-justified">

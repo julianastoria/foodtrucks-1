@@ -2,9 +2,9 @@
 // GESTION DES FLASHBAGS
 
 function setFlashbag($state, $message) {
-  // if (isset($_SESSION['flashbag'])) {
-  //
-  // }
+  if (!isset($_SESSION['flashbag'])) {
+    $_SESSION['flashbag'] = [];
+  }
 
   array_push($_SESSION['flashbag'], [
     "state" => $state,

@@ -2,13 +2,29 @@
 include_once '../private/app/config.php';
 include_once '../private/app/routes.php';
 
+include_once '../private/functions/flashbag.php';
+
+
+// --------------------
+// CONFIG PHP
+// --------------------
+if (MODE === "dev") {
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+} else {
+    ini_set('display_errors', 0);
+    ini_set('display_startup_errors', 0);
+    error_reporting(0);
+}
+
 
 
 // --------------------
 // INITIALISATION DE SESSION
 // --------------------
 session_start();
-
+var_dump($_SESSION);
 
 // --------------------
 // CONNEXION BDD
@@ -60,7 +76,7 @@ if (
     &&
     !(isset($_SESSION['user']['id']) && !empty($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id']))
 ) {
-    // setFlashbag("warning","Vous n'êtes pas autorisé à afficher la page ".$page);
+    setFlashbag("warning","Vous n'êtes pas autorisé à afficher la page ".$page);
     header("location: index.php?page=login");
     exit;
 }

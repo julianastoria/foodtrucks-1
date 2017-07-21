@@ -16,6 +16,17 @@
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
         <h3 class="text-muted">Les Foodtrucks du coin !</h3>
+
+        <nav>
+          <ul class="nav navbar-right">
+
+            <li><a href="index.php?page=register">Inscription</a></li>
+            <li><a href="index.php?page=login">Connexion</a></li>
+            <li><a href="index.php?page=profile">UserName</a></li>
+
+          </ul>
+        </nav>
+
         <nav>
           <ul class="nav nav-justified">
             <li><a href="index.php?page=home">Home</a></li>
@@ -26,3 +37,5 @@
       </div>
 
       <div id="content">
+
+        <?php getFlashbag(); ?>

@@ -24,7 +24,7 @@ if (MODE === "dev") {
 // INITIALISATION DE SESSION
 // --------------------
 session_start();
-var_dump($_SESSION);
+
 
 // --------------------
 // CONNEXION BDD

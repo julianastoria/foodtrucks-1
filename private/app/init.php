@@ -1,7 +1,7 @@
 <?php
 include_once '../private/app/config.php';
 include_once '../private/app/routes.php';
-include_once '../private/functions/autoload.php';
+include_once '../private/app/autoload.php';
 
 // include_once '../private/functions/flashbag.php';
 // include_once '../private/functions/token.php';

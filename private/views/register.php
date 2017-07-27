@@ -25,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $firstname = isset($_POST['firstname']) ? $_POST['firstname'] : null;
     $lastname =  isset($_POST['lastname']) ? $_POST['lastname'] : null;
     $gender =  isset($_POST['gender']) ? $_POST['gender'] : null;
-    $birth_day =  isset($_POST['birth[day]']) ? $_POST['birth[day]'] : null;
-    $birth_month =  isset($_POST['birth[month]']) ? $_POST['birth[month]'] : null;
-    $birth_year =  isset($_POST['birth[year]']) ? $_POST['birth[year]'] : null;
+    $birth_day =  isset($_POST['birth']['day']) ? $_POST['birth']['day'] : null;
+    $birth_month =  isset($_POST['birth']['month']) ? $_POST['birth']['month'] : null;
+    $birth_year =  isset($_POST['birth']['year']) ? $_POST['birth']['year'] : null;
     var_dump($_POST);
 
 
@@ -106,8 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // --
     // -> doit etre une date valide
     // -> doit être supérieur à 13ans au moment de l'inscription
-        if (($birth_month != null && $birth_day != null && $birth_year != null) &&
-        !checkdate($birth_month, $birth_day, $birth_year)) {
+    if (($birth_month != null && $birth_day != null && $birth_year != null) &&
+    !checkdate($birth_month, $birth_day, $birth_year)) {
         $save = false;
         setFlashbag("danger", "Veuillez sélectionner une date de naissance valide");
     } else {
@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // -> doit être supérieur à 13ans au moment de l'inscription
     if (isset($birthday)) {
       $tz  = new DateTimeZone('Europe/Brussels');
-      $age = DateTime::createFromFormat('d/m/Y', $birthday, $tz)
+      $age = DateTime::createFromFormat('Y-m-d', $birthday, $tz)
            ->diff(new DateTime('now', $tz))
            ->y;
       $minAge = 13;

@@ -23,7 +23,8 @@
             <a href="index.php?page=register">Inscription</a>
             <a href="index.php?page=login">Connexion</a>
             <?php else: ?>
-            <a href="index.php?page=profile">UserName</a>
+            <a href="index.php?page=profile"><?php echo $_SESSION['user']['firstname']." ".$_SESSION['user']['lastname']; ?></a>
+            <a href="index.php?page=logout">Déconnexion</a>
             <?php endif; ?>
 
         </nav>
@@ -40,5 +41,6 @@
       </div>
 
       <div id="content">
+
 
         <?php getFlashbag(); ?>
